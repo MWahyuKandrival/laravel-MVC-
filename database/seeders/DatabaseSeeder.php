@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Category;
-use App\Models\Post;
+use App\Models\Article;
 
 class DatabaseSeeder extends Seeder
 {
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'personal'
         ]);
 
-        Post::factory(20)->create();
+        Article::factory(20)->create();
 
         // Post::create([
         //     'title' => 'Judul Pertama',

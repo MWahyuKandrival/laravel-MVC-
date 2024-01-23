@@ -8,6 +8,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardArticleController;
+use App\Http\Controllers\HomeController;
 use App\Models\Article;
 
 /*
@@ -26,25 +27,31 @@ use App\Models\Article;
 // });
 
 
-Route::get('/', function () {
+Route::get('/old', function () {
     return view('home', [
         "title" => "Home",
         "active" => 'home'
     ]);
 });
 
-Route::get('/about', function () {
-    return view('about', [
-        'title' => 'About',
-        'active' => 'about',
-        'name' => 'Zul Ijra Saryendy',
-        'email' => 'saryendyzulijra@gmail.com',
-        'image' => 'zulijra.jfif'
-    ]);
-});
+Route::get("/", [HomeController::class, "test"])->name("home.test");
+Route::get("/about", [HomeController::class, "about"])->name("home.about");
+Route::get("/blogs", [HomeController::class, "blogs"])->name("home.blogs");
+Route::get("/blogs", [HomeController::class, "blogs"])->name("home.blogs");
+Route::get('/articles/{article:slug}', [HomeController::class, 'show']);
+
+// Route::get('/about', function () {
+//     return view('about', [
+//         'title' => 'About',
+//         'active' => 'about',
+//         'name' => 'Zul Ijra Saryendy',
+//         'email' => 'saryendyzulijra@gmail.com',
+//         'image' => 'zulijra.jfif'
+//     ]);
+// });
 
 Route::get('/articles', [ArticleController::class, 'index']);
-Route::get('/articles/{article:slug}', [ArticleController::class, 'show']);
+// Route::get('/articles/{article:slug}', [ArticleController::class, 'show']);
 
 Route::get('/categories', function () {
     return view('categories', [

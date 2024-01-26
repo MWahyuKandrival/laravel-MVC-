@@ -34,7 +34,7 @@
         <h3 class="widget_title">Recent Post</h3>
         @foreach ($recentNews as $item)
             <div class="media post_item">
-                <img src="assets/img/post/post_1.png" alt="post">
+                <img src="/assets/img/post/post_1.png" alt="post">
                 <div class="media-body">
                     <a href="single-blog.html">
                         <h3>{{ $item->title }}</h3>

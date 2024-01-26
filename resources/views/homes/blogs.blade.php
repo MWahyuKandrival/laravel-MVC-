@@ -22,7 +22,7 @@
                                     </a>
                                     <p>{{ $item->excerpt }}</p>
                                     <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> {{ $item->author->name }}</a></li>
+                                        <li><a href="/blogs?author={{ $item->author->username }}"><i class="fa fa-user"></i> {{ $item->author->name }}</a></li>
                                         <li><a href="#"><i class="fa fa-calendar"></i>
                                                 {{ $item->created_at->diffForHumans() }}</a></li>
                                     </ul>

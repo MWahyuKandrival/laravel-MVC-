@@ -68,9 +68,8 @@
                         <div class="header-right-btn f-right d-none d-lg-block">
                             <i class="fas fa-search special-tag"></i>
                             <div class="search-box">
-                                <form action="#">
-                                    <input type="text" placeholder="Search">
-
+                                <form action="/blogs">
+                                    <input type="text" name="search" placeholder="Search">
                                 </form>
                             </div>
                         </div>

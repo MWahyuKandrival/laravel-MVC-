@@ -17,9 +17,14 @@ class DashboardArticleController extends Controller
      */
     public function index()
     {
-
+        $user = auth()->user();
+        if($user->is_admin){
+            $article = Article::orderBy("id", "DESC")->get();
+        }else{
+            $article = Article::orderBy("id", "DESC")->where('user_id', auth()->user()->id)->get();
+        }
         return view('dashboard.articles.index', [
-            'articles' => Article::where('user_id', auth()->user()->id)->get()
+            'articles' => $article
         ]);
     }
 

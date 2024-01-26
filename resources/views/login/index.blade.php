@@ -1,7 +1,7 @@
 @extends('layouts.homes')
 
 @section('container')
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-100 mt-100">
   <div class="col-md-4">
 
     @if(session()->has('success'))
@@ -23,8 +23,8 @@
       <form action="/login" method="post">
         @csrf
         <div class="form-floating">
-          <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
           <label for="email">Email address</label>
+          <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="name@example.com" autofocus required value="{{ old('email') }}">
           @error('email')
             <div class="invalid-feedback">
               {{ $message }}
@@ -32,13 +32,15 @@
           @enderror
         </div>
         <div class="form-floating">
-          <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
           <label for="password">Password</label>
+          <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
         </div>
     
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+        <button class="mt-10 w-100 btn btn-lg btn-primary" type="submit">Login</button>
       </form>
     </main>
+    <small class="d-block text-center mt-3">Not registered?</small>
+    <a class="mt-10 w-100 btn btn-lg btn-warning" href="/register">Register</a>
   </div>
 </div>
 

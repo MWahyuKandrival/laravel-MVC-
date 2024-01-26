@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminUsersController;
 use App\Models\Category;
 
 use Illuminate\Support\Facades\Route;
@@ -37,7 +38,7 @@ Route::get('/old', function () {
 Route::get("/", [HomeController::class, "test"])->name("home.test");
 Route::get("/about", [HomeController::class, "about"])->name("home.about");
 Route::get("/blogs", [HomeController::class, "blogs"])->name("home.blogs");
-Route::get("/blogs", [HomeController::class, "blogs"])->name("home.blogs");
+Route::get("/articles", [HomeController::class, "blogs"])->name("home.blogs");
 Route::get('/articles/{article:slug}', [HomeController::class, 'show']);
 Route::post('/comment/{article:slug}', [HomeController::class, 'storeComment'])->name("home.storeComment");
 
@@ -67,8 +68,8 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout'])->name("logout");
 
-// Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-// Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
@@ -79,3 +80,5 @@ Route::resource('/dashboard/articles', DashboardArticleController::class)->middl
 
 Route::get('/dashboard/categories/checkSlug', [AdminCategoryController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/categories', AdminCategoryController::class)->middleware('admin');
+
+Route::resource("/dashboard/users", AdminUsersController::class)->middleware("admin");

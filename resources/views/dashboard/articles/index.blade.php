@@ -19,6 +19,9 @@
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Category</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Created At</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -28,6 +31,9 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $article->title }}</td>
                         <td>{{ $article->category->name }}</td>
+                        <td>{{ $article->author->name }}</td>
+                        <td>{{ $article->views }}</td>
+                        <td>{{ $article->created_at->diffForHumans() }}</td>
                         <td>
                             <a href="/dashboard/articles/{{ $article->slug }}" class="badge bg-info"><span
                                     data-feather="eye"></span></a>

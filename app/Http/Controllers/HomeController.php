@@ -65,6 +65,8 @@ class HomeController extends Controller
 
     public function show(Article $article)
     {
+        $article->views++;
+        $article->save();
         $category = Category::with('articles')->get();
         $recentNews = Article::with("category")->latest()->limit(4)->get();
         $random = Article::select('title' ,'slug')->where("id", "!=", $article->id)->inRandomOrder()->limit(2)->get();

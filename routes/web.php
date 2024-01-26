@@ -39,6 +39,7 @@ Route::get("/about", [HomeController::class, "about"])->name("home.about");
 Route::get("/blogs", [HomeController::class, "blogs"])->name("home.blogs");
 Route::get("/blogs", [HomeController::class, "blogs"])->name("home.blogs");
 Route::get('/articles/{article:slug}', [HomeController::class, 'show']);
+Route::post('/comment/{article:slug}', [HomeController::class, 'storeComment'])->name("home.storeComment");
 
 // Route::get('/about', function () {
 //     return view('about', [

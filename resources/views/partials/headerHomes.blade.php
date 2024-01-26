@@ -60,6 +60,12 @@
                                     <li><a href="/about">About</a></li>
                                     <li><a href="/blogs">Latest News</a></li>
                                     <li><a href="/">Contact</a></li>
+                                    @auth
+                                        <li><a href="/dashboard">Dashboard</a></li>
+                                    @endauth
+                                    @guest
+                                        <li><a href="/login">Login</a></li>
+                                    @endguest
                                 </ul>
                             </nav>
                         </div>

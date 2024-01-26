@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -73,5 +74,20 @@ class HomeController extends Controller
             "recentNews" => $recentNews,
             "random" => $random,
         ]);
+    }
+
+    public function storeComment(Request $request, Article $article)
+    {
+        $validatedData = $request->validate([
+            'comment' => 'required',
+        ]);
+        $data = [
+            "article_id" => $article->id,
+            "user_id" => auth()->user()->id,
+            "body" => $validatedData["comment"],
+        ];
+        Comment::create($data);
+
+        return redirect("/articles/$article->slug")->with('success', 'Comment berhasil ditambahkan');
     }
 }

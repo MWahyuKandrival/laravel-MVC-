@@ -62,6 +62,10 @@
                                     <li><a href="/">Contact</a></li>
                                     @auth
                                         <li><a href="/dashboard">Dashboard</a></li>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                                     @endauth
                                     @guest
                                         <li><a href="/login">Login</a></li>

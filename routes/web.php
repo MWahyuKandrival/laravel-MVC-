@@ -51,24 +51,24 @@ Route::post('/comment/{article:slug}', [HomeController::class, 'storeComment'])-
 //     ]);
 // });
 
-Route::get('/articles', [ArticleController::class, 'index']);
+// Route::get('/articles', [ArticleController::class, 'index']);
 // Route::get('/articles/{article:slug}', [ArticleController::class, 'show']);
 
-Route::get('/categories', function () {
-    return view('categories', [
-        'title' => 'Article Categories',
-        'active' => 'categories',
-        'categories' => Category::all()
-    ]);
-});
+// Route::get('/categories', function () {
+//     return view('categories', [
+//         'title' => 'Article Categories',
+//         'active' => 'categories',
+//         'categories' => Category::all()
+//     ]);
+// });
 
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [LoginController::class, 'logout'])->name("logout");
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+// Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+// Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');

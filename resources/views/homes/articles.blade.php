@@ -80,7 +80,7 @@
                     </div>
                     <div class="blog-author">
                         <div class="media align-items-center">
-                            <img src="/assets/img/blog/author.png" alt="">
+                            {{-- <img src="/assets/img/blog/author.png" alt=""> --}}
                             <div class="media-body">
                                 <a href="/blogs?author={{ $article->author->username }}">
                                     <h4>{{ $article->author->name }}</h4>
@@ -97,9 +97,9 @@
                             <div class="comment-list">
                                 <div class="single-comment justify-content-between d-flex">
                                     <div class="user justify-content-between d-flex">
-                                        <div class="thumb">
+                                        {{-- <div class="thumb">
                                             <img src="/assets/img/comment/comment_1.png" alt="">
-                                        </div>
+                                        </div> --}}
                                         <div class="desc">
                                             <p class="comment">
                                                 {{ $item->body }}

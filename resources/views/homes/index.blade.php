@@ -26,10 +26,15 @@
                         <!-- Trending Top -->
                         <div class="trending-top mb-30">
                             <div class="trend-top-img">
-                                <img src="/assets/img/trending/trending_top.jpg" alt="">
+                                @if ($trendingNews[0]->image)
+                                    <img src="{{ asset('storage/' . $trendingNews[0]->image) }}" alt="">
+                                @else
+                                    <img src="https://source.unsplash.com/400x400?{{ $trendingNews[0]->category->name }}"
+                                        alt="">
+                                @endif
                                 <div class="trend-top-cap">
                                     <span>{{ $trendingNews[0]->category->name }}</span>
-                                    <h2><a href="details.html">{{ $trendingNews[0]->title }}</a></h2>
+                                    <h2><a href="/articles/{{ $trendingNews[0]->slug }}">{{ $trendingNews[0]->title }}</a></h2>
                                 </div>
                             </div>
                         </div>
@@ -40,11 +45,17 @@
                                     <div class="col-lg-4">
                                         <div class="single-bottom mb-35">
                                             <div class="trend-bottom-img mb-30">
-                                                <img src="/assets/img/trending/trending_bottom1.jpg" alt="">
+                                                @if ($trendingNews[$i]->image)
+                                                    <img src="{{ asset('storage/' . $trendingNews[$i]->image) }}"
+                                                        alt="">
+                                                @else
+                                                    <img src="https://source.unsplash.com/400x400?{{ $trendingNews[$i]->category->name }}"
+                                                        alt="">
+                                                @endif
                                             </div>
                                             <div class="trend-bottom-cap">
                                                 <span class="color1">{{ $trendingNews[$i]->category->name }}</span>
-                                                <h4><a href="details.html">{{ $trendingNews[$i]->title }}</a></h4>
+                                                <h4><a href="/articles/{{ $trendingNews[$i]->slug }}">{{ $trendingNews[$i]->title }}</a></h4>
                                             </div>
                                         </div>
                                     </div>
@@ -54,14 +65,19 @@
                     </div>
                     <!-- Right content -->
                     <div class="col-lg-4">
-                        @for ($i = 4; $i < 9; $i++)
+                        @for ($i = 4; $i < 8; $i++)
                             <div class="trand-right-single d-flex">
                                 <div class="trand-right-img">
-                                    <img src="/assets/img/trending/right1.jpg" alt="">
+                                    @if ($trendingNews[$i]->image)
+                                        <img src="{{ asset('storage/' . $trendingNews[$i]->image) }}" style="width: 200px; height: 150px;" alt="">
+                                    @else
+                                        <img src="https://source.unsplash.com/200x150?{{ $trendingNews[$i]->category->name }}"
+                                            alt="">
+                                    @endif
                                 </div>
                                 <div class="trand-right-cap">
                                     <span class="color1">{{ $trendingNews[$i]->category->name }}</span>
-                                    <h4><a href="details.html">{{ $trendingNews[$i]->title }}</a></h4>
+                                    <h4><a href="/articles/{{ $trendingNews[$i]->slug }}">{{ $trendingNews[$i]->title }}</a></h4>
                                 </div>
                             </div>
                         @endfor
@@ -92,11 +108,16 @@
                             @foreach ($recentNews as $news)
                                 <div class="single-recent mb-100">
                                     <div class="what-img">
-                                        <img src="/assets/img/news/recent1.jpg" alt="">
+                                        @if ($news->image)
+                                            <img src="{{ asset('storage/' . $news->image) }}" style="width: 400px; height: 400px;" alt="">
+                                        @else
+                                            <img src="https://source.unsplash.com/400x400?{{ $news->category->name }}"
+                                                alt="">
+                                        @endif
                                     </div>
                                     <div class="what-cap">
                                         <span class="color1">{{ $news->category->name }}</span>
-                                        <h4><a href="#">{{ $news->title }}</a></h4>
+                                        <h4><a href="/articles/{{ $news->slug }}">{{ $news->title }}</a></h4>
                                     </div>
                                 </div>
                             @endforeach

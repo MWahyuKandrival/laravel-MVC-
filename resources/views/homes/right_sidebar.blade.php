@@ -1,18 +1,16 @@
 <div class="blog_right_sidebar">
     <aside class="single_sidebar_widget search_widget">
-        <form action="#">
+        <form action="/blogs">
             <div class="form-group">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder='Search Keyword'
-                        name="search" onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Search Keyword'">
+                    <input type="text" class="form-control" placeholder='Search Keyword' name="search"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
                     <div class="input-group-append">
                         <button class="btns" type="button"><i class="ti-search"></i></button>
                     </div>
                 </div>
             </div>
-            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
-                type="submit">Search</button>
+            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Search</button>
         </form>
     </aside>
 
@@ -34,9 +32,13 @@
         <h3 class="widget_title">Recent Post</h3>
         @foreach ($recentNews as $item)
             <div class="media post_item">
-                <img src="/assets/img/post/post_1.png" alt="post">
+                @if ($item->image)
+                    <img src="{{ asset('storage/' . $item->image) }}" style="width: 90px; height: 90px;" alt="post">
+                @else
+                    <img src="/assets/img/post/post_1.png" alt="post">
+                @endif
                 <div class="media-body">
-                    <a href="single-blog.html">
+                    <a href="/articles/{{ $item->slug }}">
                         <h3>{{ $item->title }}</h3>
                     </a>
                     <p>{{ $item->created_at->diffForHumans() }}</p>

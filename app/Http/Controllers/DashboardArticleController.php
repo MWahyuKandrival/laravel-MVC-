@@ -57,7 +57,7 @@ class DashboardArticleController extends Controller
         ]);
 
         if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('articles-image');
+            $validatedData['image'] = $request->file('image')->store('articles-image', ['disk' => 'public']);
         }
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
@@ -129,7 +129,7 @@ class DashboardArticleController extends Controller
                 Storage::delete($article->image);
             }
 
-            $validatedData['image'] = $request->file('image')->store('articles-image');
+            $validatedData['image'] = $request->file('image')->store('articles-image', ['disk' => 'public']);
         }
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);

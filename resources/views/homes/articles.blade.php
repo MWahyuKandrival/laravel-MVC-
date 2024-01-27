@@ -8,7 +8,12 @@
                 <div class="col-lg-8 posts-list">
                     <div class="single-post">
                         <div class="feature-img">
-                            <img class="img-fluid" src="/assets/img/blog/single_blog_1.png" alt="">
+                            @if ($article->image)
+                                <img src="{{ asset('storage/' . $article->image) }}"
+                                    alt="">
+                            @else
+                                <img src="https://source.unsplash.com/800x400?{{ $article->category->name }}" alt="">
+                            @endif
                         </div>
                         <div class="blog_details">
                             <h2>{{ $article->title }}
@@ -125,7 +130,9 @@
                     <div class="comment-form">
                         <h4>Leave a Reply</h4>
                         @auth
-                            <form class="form-contact comment_form" action="{{ route("home.storeComment", ["article" => $article->slug]) }}" method="POST" id="commentForm">
+                            <form class="form-contact comment_form"
+                                action="{{ route('home.storeComment', ['article' => $article->slug]) }}" method="POST"
+                                id="commentForm">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">
